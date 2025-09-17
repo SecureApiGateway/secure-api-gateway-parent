@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2020-2024 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2025 ForgeRock AS (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 
     <groupId>com.forgerock.sapi.gateway</groupId>
     <artifactId>secure-api-gateway-parent</artifactId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>5.0.1-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Api Gateway projects</description>
@@ -70,7 +70,7 @@
     <properties>
         <!-- will be the last year in the copyright license header year range -->
         <!-- Will be changed every year -->
-        <copyright-current-year>2024</copyright-current-year>
+        <copyright-current-year>2025</copyright-current-year>
         <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
