@@ -67,6 +67,41 @@
         </license>
     </licenses>
 
+    <repositories>
+        <repository>
+            <id>maven.forgerock.org-community</id>
+            <name>maven.forgerock.org-releases</name>
+            <url>https://maven.forgerock.org/artifactory/community</url>
+        </repository>
+        <repository>
+            <id>maven.forgerock.org-community-snapshots</id>
+            <name>maven.forgerock.org-snapshots</name>
+            <url>https://maven.forgerock.org/artifactory/community</url>
+        </repository>
+        <repository>
+            <id>forgerock-internal-releases</id>
+            <name>ForgeRock Private Releases Repository</name>
+            <url>https://maven.forgerock.org/artifactory/internal-releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>forgerock-internal-snapshots</id>
+            <name>ForgeRock Internal Snapshots Repository</name>
+            <url>https://maven.forgerock.org/artifactory/internal-snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
     <properties>
         <!-- will be the last year in the copyright license header year range -->
         <!-- Will be changed every year -->
@@ -76,6 +111,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
 
+        <openig.version>2025.11.0-SNAPSHOT</openig.version>
         <spring-boot.version>3.2.1</spring-boot.version>
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
@@ -85,24 +121,17 @@
         <swagger-annotations-v3.version>2.2.20</swagger-annotations-v3.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb.sun.version>2.3.4</jaxb.sun.version>
-        <joda-time.version>2.10.8</joda-time.version>
-        <jackson-joda.version>2.14.2</jackson-joda.version>
-        <jackson.version>2.20.0</jackson.version>
-        <guava.version>33.0.0-jre</guava.version>
         <lombok.version>1.18.20</lombok.version>
         <bouncycastle.version>1.78.1</bouncycastle.version>
         <model-mapper.version>2.4.4</model-mapper.version>
         <nimbus-jose.version>9.40</nimbus-jose.version>
         <httpclient.version>5.2.3</httpclient.version>
         <commons-lang3.version>3.19.0</commons-lang3.version>
-
-        <junit-jupiter.version>5.7.0</junit-jupiter.version>
-        <assertj.version>3.25.1</assertj.version>
-        <mockito.version>5.11.0</mockito.version>
         <flapdoodle-mongo.version>4.12.0</flapdoodle-mongo.version>
 
         <!-- Plugin versions -->
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
         <maven-deploy-plugin.version>3.1.0</maven-deploy-plugin.version>
@@ -120,6 +149,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- IG BOM -->
+            <dependency>
+                <groupId>org.forgerock.openig</groupId>
+                <artifactId>openig-bom</artifactId>
+                <version>${openig.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
 
             <!-- Spring Boot Dependencies -->
             <dependency>
@@ -143,12 +180,6 @@
             </dependency>
 
             <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose.version}</version>
@@ -158,34 +189,6 @@
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>${jakarta.validation-api.version}</version>
-            </dependency>
-
-            <!-- Jackson -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-joda</artifactId>
-                <version>${jackson-joda.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>${joda-time.version}</version>
             </dependency>
 
             <dependency>
@@ -229,15 +232,6 @@
             </dependency>
 
             <!-- 3rd Party Test dependencies -->
-
-            <!-- JUnit 5 -->
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
@@ -254,20 +248,6 @@
                         <artifactId>junit-vintage-engine</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
             </dependency>
 
             <dependency>
@@ -321,7 +301,11 @@
                         <parameters>true</parameters>
                     </configuration>
                 </plugin>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
                 <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/versions-maven-plugin -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
