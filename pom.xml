@@ -94,7 +94,7 @@
         <model-mapper.version>2.4.4</model-mapper.version>
         <nimbus-jose.version>9.40</nimbus-jose.version>
         <httpclient.version>5.2.3</httpclient.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
 
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <assertj.version>3.25.1</assertj.version>
