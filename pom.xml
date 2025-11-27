@@ -21,7 +21,7 @@
 
     <groupId>com.forgerock.sapi.gateway</groupId>
     <artifactId>secure-api-gateway-parent</artifactId>
-    <version>5.0.4-SNAPSHOT</version>
+    <version>5.0.6-SNAPSHOT</version>
     <name>securebanking-parent</name>
     <packaging>pom</packaging>
     <description>A parent pom to be used by all ForgeRock Secure Api Gateway projects</description>
@@ -111,7 +111,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
 
-        <openig.version>2025.11.0-SNAPSHOT</openig.version>
+        <openig.version>2026.3.0-SNAPSHOT</openig.version>
         <spring-boot.version>3.2.1</spring-boot.version>
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
