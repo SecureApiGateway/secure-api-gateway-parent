@@ -112,21 +112,17 @@
         <java.version>17</java.version>
 
         <openig.version>2026.3.0-SNAPSHOT</openig.version>
-        <spring-boot.version>3.2.1</spring-boot.version>
+        <spring-boot.version>3.5.8</spring-boot.version>
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <hibernate-validator-cdi.version>8.0.1.Final</hibernate-validator-cdi.version>
         <javax-el.version>3.0.1-b12</javax-el.version>
         <swagger-annotations.version>1.6.12</swagger-annotations.version>
         <swagger-annotations-v3.version>2.2.20</swagger-annotations-v3.version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jaxb.sun.version>2.3.4</jaxb.sun.version>
         <lombok.version>1.18.42</lombok.version>
-        <bouncycastle.version>1.78.1</bouncycastle.version>
+        <bouncycastle.version>1.83</bouncycastle.version>
         <model-mapper.version>2.4.4</model-mapper.version>
         <nimbus-jose.version>9.40</nimbus-jose.version>
-        <httpclient.version>5.2.3</httpclient.version>
-        <commons-lang3.version>3.19.0</commons-lang3.version>
         <flapdoodle-mongo.version>4.12.0</flapdoodle-mongo.version>
 
         <!-- Plugin versions -->
@@ -169,38 +165,11 @@
 
             <!-- Other 3rd Party -->
             <dependency>
-                <groupId>org.apache.httpcomponents.client5</groupId>
-                <artifactId>httpclient5</artifactId>
-                <version>${httpclient.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>jakarta.validation</groupId>
-                <artifactId>jakarta.validation-api</artifactId>
-                <version>${jakarta.validation-api.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.xml.bind</groupId>
-                <artifactId>jaxb-api</artifactId>
-                <version>${jaxb-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.xml.bind</groupId>
-                <artifactId>jaxb-impl</artifactId>
-                <version>${jaxb.sun.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
