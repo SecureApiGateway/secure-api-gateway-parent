@@ -122,7 +122,7 @@
         <lombok.version>1.18.42</lombok.version>
         <bouncycastle.version>1.83</bouncycastle.version>
         <model-mapper.version>2.4.4</model-mapper.version>
-        <nimbus-jose.version>9.40</nimbus-jose.version>
+        <nimbus-jose.version>10.5</nimbus-jose.version>
         <flapdoodle-mongo.version>4.12.0</flapdoodle-mongo.version>
 
         <!-- Plugin versions -->
