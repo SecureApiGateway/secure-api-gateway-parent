@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2020-2025 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2026 ForgeRock AS (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@
         <legal.path.header>legal/LICENSE-HEADER.txt</legal.path.header>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
 
         <openig.version>2026.3.0-SNAPSHOT</openig.version>
         <spring-boot.version>3.5.8</spring-boot.version>
