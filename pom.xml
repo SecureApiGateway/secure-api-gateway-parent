@@ -102,6 +102,26 @@
         </repository>
     </repositories>
 
+    <scm>
+        <connection>scm:git:${project.scm.url}</connection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
+        <url>https://github.com/SecureApiGateway/secure-api-gateway-parent.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>maven.forgerock.org-community</id>
+            <name>maven.forgerock.org-releases</name>
+            <url>https://maven.forgerock.org/artifactory/community</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven.forgerock.org-community-snapshots</id>
+            <name>maven.forgerock.org-snapshots</name>
+            <url>https://maven.forgerock.org/artifactory/community</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <!-- will be the last year in the copyright license header year range -->
         <!-- Will be changed every year -->
@@ -125,6 +145,13 @@
         <nimbus-jose.version>10.6</nimbus-jose.version>
         <flapdoodle-mongo.version>4.12.0</flapdoodle-mongo.version>
 
+        <!-- Docker properties -->
+        <docker.image.repo>europe-west4-docker.pkg.dev/sbat-gcr-develop/sapig-docker-artifact/securebanking</docker.image.repo>
+        <docker.image.tag>latest</docker.image.tag>
+        <docker.openig-image>gcr.io/forgerock-io/ig/docker-build:${openig-sanitize.version}-latest-postcommit</docker.openig-image>
+        <docker.platforms>linux/amd64,linux/arm64</docker.platforms>
+        <docker.imagePullPolicy>Always</docker.imagePullPolicy>
+
         <!-- Plugin versions -->
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.4.0</maven-resources-plugin.version>
@@ -136,11 +163,12 @@
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
         <spring-boot-maven-plugin.version>4.0.0</spring-boot-maven-plugin.version>
-        <build-helper-plugin.version>3.2.0</build-helper-plugin.version>
+        <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
         <mycila-license-maven-plugin.version>4.1</mycila-license-maven-plugin.version>
         <openapi-generator.version>7.2.0</openapi-generator.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
+        <fabric8.version>0.45.1</fabric8.version>
     </properties>
 
     <dependencyManagement>
@@ -315,7 +343,6 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${maven-failsafe-plugin.version}</version>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
@@ -359,10 +386,16 @@
                                 <header>${legal.path.header}</header>
                                 <excludes>
                                     <exclude>**/README</exclude>
+                                    <exclude>**/LICENSE</exclude>
+                                    <exclude>**/*.md</exclude>
+                                    <exclude>**/*.yaml</exclude>
+                                    <exclude>legal/**</exclude>
                                     <exclude>src/test/resources/**</exclude>
                                     <exclude>src/main/resources/**</exclude>
+                                    <exclude>**/.properties</exclude>
+                                    <exclude>**/.java-version</exclude>
                                     <exclude>_infra/**</exclude>
-                                    <exclude>docker/**</exclude>
+                                    <exclude>**/docker/**</exclude>
                                     <exclude>Dockerfile</exclude>
                                     <exclude>Makefile</exclude>
                                 </excludes>
@@ -399,7 +432,7 @@
                     <artifactId>openapi-generator-maven-plugin</artifactId>
                     <version>${openapi-generator.version}</version>
                 </plugin>
-
+                <!-- Will be moved to fabric8 plugin when we migrate to it -->
                 <plugin>
                     <groupId>com.spotify</groupId>
                     <artifactId>dockerfile-maven-plugin</artifactId>
@@ -411,10 +444,38 @@
                     <artifactId>git-commit-id-plugin</artifactId>
                     <version>${git-commit-id-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${fabric8.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>openig-sanitize.version</name>
+                            <value>${openig.version}</value>
+                            <regex>-SNAPSHOT</regex>
+                            <failIfNoMatch>false</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -441,25 +502,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <scm>
-        <connection>scm:git:${project.scm.url}</connection>
-        <developerConnection>scm:git:${project.scm.url}</developerConnection>
-        <url>https://github.com/SecureApiGateway/secure-api-gateway-parent.git</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>maven.forgerock.org-community</id>
-            <name>maven.forgerock.org-releases</name>
-            <url>https://maven.forgerock.org/artifactory/community</url>
-        </repository>
-        <snapshotRepository>
-            <id>maven.forgerock.org-community-snapshots</id>
-            <name>maven.forgerock.org-snapshots</name>
-            <url>https://maven.forgerock.org/artifactory/community</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>
