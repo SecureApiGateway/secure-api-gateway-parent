@@ -403,7 +403,7 @@
                         </licenseSets>
                         <properties>
                             <currentYear>${copyright-current-year}</currentYear>
-                            <owner>ForgeRock AS</owner>
+                            <owner>Ping Identity Corporation</owner>
                             <email>obst@forgerock.com</email>
                         </properties>
                         <mapping>
