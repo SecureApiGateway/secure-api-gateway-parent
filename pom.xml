@@ -138,7 +138,7 @@
         <hibernate-validator-cdi.version>8.0.1.Final</hibernate-validator-cdi.version>
         <javax-el.version>3.0.1-b12</javax-el.version>
         <swagger-annotations.version>1.6.16</swagger-annotations.version>
-        <swagger-annotations-v3.version>2.2.20</swagger-annotations-v3.version>
+        <swagger-annotations-v3.version>2.2.41</swagger-annotations-v3.version>
         <lombok.version>1.18.42</lombok.version>
         <bouncycastle.version>1.83</bouncycastle.version>
         <model-mapper.version>2.4.4</model-mapper.version>
