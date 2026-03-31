@@ -165,7 +165,7 @@
         <spring-boot-maven-plugin.version>4.0.0</spring-boot-maven-plugin.version>
         <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
         <mycila-license-maven-plugin.version>4.1</mycila-license-maven-plugin.version>
-        <openapi-generator.version>7.2.0</openapi-generator.version>
+        <openapi-generator.version>7.17.0</openapi-generator.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
         <fabric8.version>0.45.1</fabric8.version>
