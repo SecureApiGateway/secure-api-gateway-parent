@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2020-2026 ForgeRock AS (obst@forgerock.com)
+    Copyright © 2020-2026 Ping Identity Corporation (obst@forgerock.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -140,7 +140,7 @@
         <swagger-annotations.version>1.6.16</swagger-annotations.version>
         <swagger-annotations-v3.version>2.2.20</swagger-annotations-v3.version>
         <lombok.version>1.18.42</lombok.version>
-        <bouncycastle.version>1.83</bouncycastle.version>
+        <bouncycastle.version>1.84</bouncycastle.version>
         <model-mapper.version>2.4.4</model-mapper.version>
         <nimbus-jose.version>10.6</nimbus-jose.version>
         <flapdoodle-mongo.version>4.12.0</flapdoodle-mongo.version>
