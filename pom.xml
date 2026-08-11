@@ -131,7 +131,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>21</java.version>
 
-        <openig.version>2026.6.0</openig.version>
+        <openig.version>2026.6.0-20260629092452-2e6cded9f7e232b3a2762b2ac844c9f81df6e98f</openig.version>
         <spring-boot.version>3.5.8</spring-boot.version>
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
