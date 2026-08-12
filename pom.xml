@@ -100,6 +100,17 @@
                 <enabled>false</enabled>
             </releases>
         </repository>
+        <repository>
+            <id>forgerock-internal-staging</id>
+            <name>ForgeRock Internal Staging Repository</name>
+            <url>https://maven.forgerock.org/artifactory/internal-staging</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
     </repositories>
 
     <scm>
@@ -131,7 +142,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>21</java.version>
 
-        <openig.version>2026.9.0-SNAPSHOT</openig.version>
+        <openig.version>2026.9.0-20260811205209-30f39b6c3cb30ef8d5a831a338c6ade37ef07317</openig.version>
         <spring-boot.version>3.5.8</spring-boot.version>
         <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
